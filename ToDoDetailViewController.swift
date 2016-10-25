@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ToDoDetailViewController: UIViewController {
+class ToDoDetailViewController: UIViewController  {
     @IBOutlet weak var toDoNameField: UITextField!
     @IBOutlet weak var toDoDatePicker: UIDatePicker!
     @IBOutlet weak var toDoCategoryControl: UISegmentedControl!
@@ -78,6 +78,7 @@ class ToDoDetailViewController: UIViewController {
         todo.completed = completedLabel.text!
         todo.dueDate = selectedDate.text!
         todo.image = imageView.image
+        ToDoStore.shared.save()
     }
 
     // MARK: - IBActions
@@ -106,11 +107,11 @@ class ToDoDetailViewController: UIViewController {
         }
     }
     
-    @IBAction func datePickerAction(_ sender: AnyObject) {
+    @IBAction func datePickerAction(_ sender: UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"
         let strDate = dateFormatter.string(from: toDoDatePicker.date)
-        self.selectedDate.text = strDate
+        selectedDate.text = strDate
         
     }
     

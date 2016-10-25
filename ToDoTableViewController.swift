@@ -44,6 +44,17 @@ class ToDoTableViewController: UITableViewController {
 
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch (section) {
+        case 0:
+            return "Work"
+        case 1:
+            return "Home"
+        default:
+            return "Other"
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -59,6 +70,7 @@ class ToDoTableViewController: UITableViewController {
             // Delete the row from the data source
             ToDoStore.shared.deleteToDo(indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            ToDoStore.shared.save()
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
@@ -87,6 +99,7 @@ class ToDoTableViewController: UITableViewController {
             let toDoDetailVC = segue.destination as! ToDoDetailViewController
             let tableCell = sender as! ToDoTableViewCell
             toDoDetailVC.todo = tableCell.todo
+            ToDoStore.shared.save()
         }
 }
     
@@ -106,6 +119,11 @@ class ToDoTableViewController: UITableViewController {
             ToDoStore.shared.addToDo(toDoDetailVC.todo)
             let indexPath = IndexPath(row: 0, section: 0)
             tableView.insertRows(at: [indexPath], with: .automatic)
+            ToDoStore.shared.save()
+            
+            
+            
+            
         }
     }
 

@@ -11,7 +11,7 @@ import UIKit
 class ToDoStore {
     static let shared = ToDoStore()
     
-    fileprivate var todos: [ToDo]!
+    var todos: [ToDo]!
     
     var selectedImage: UIImage?
     

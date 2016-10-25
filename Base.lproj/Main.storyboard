@@ -11,36 +11,48 @@
         <scene sceneID="vJG-VX-8jZ">
             <objects>
                 <tableViewController id="sZm-SX-Nd1" customClass="ToDoTableViewController" customModule="ToDoListSKC" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="uSh-DK-CIA">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="uSh-DK-CIA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <tableView key="tableFooterView" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="o2t-bF-gPQ">
+                            <rect key="frame" x="0.0" y="182" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </tableView>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoTableViewCell" id="gF2-Rl-RGn" customClass="ToDoTableViewCell" customModule="ToDoListSKC">
-                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoTableViewCell" rowHeight="90" id="gF2-Rl-RGn" customClass="ToDoTableViewCell" customModule="ToDoListSKC">
+                                <rect key="frame" x="0.0" y="92" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gF2-Rl-RGn" id="4kk-Qk-1pW">
-                                    <frame key="frameInset" width="320" height="43"/>
+                                    <frame key="frameInset" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A8p-iC-XWF">
-                                            <frame key="frameInset" minX="8" minY="11" width="178" height="21"/>
+                                            <frame key="frameInset" minX="8" minY="11" width="304" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="12/20/2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q4Q-VJ-nNJ">
-                                            <frame key="frameInset" minX="188" minY="11" width="132" height="21"/>
+                                            <frame key="frameInset" minX="188" minY="47" width="132" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" red="0.21960784489999999" green="0.0078431377190000002" blue="0.85490196939999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Due Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Zq-bB-vDV">
+                                            <frame key="frameInset" minX="104" minY="47" width="76" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="toDoDateLabel" destination="q4Q-VJ-nNJ" id="fbA-Kb-g9e"/>
+                                    <outlet property="toDoDateLabel" destination="q4Q-VJ-nNJ" id="N43-8f-dJH"/>
                                     <outlet property="toDoTitleLabel" destination="A8p-iC-XWF" id="YGZ-JK-MFb"/>
                                     <segue destination="OBH-Fd-Oxa" kind="show" identifier="EditToDoSegue" id="Tdr-qX-Krf"/>
                                 </connections>
@@ -72,7 +84,7 @@
                         <viewControllerLayoutGuide type="bottom" id="bUA-pR-dET"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jde-F4-Oyi">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="To-Do List Item:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dk8-RR-iCK">
@@ -115,16 +127,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="LUM-6p-fQk">
-                                <frame key="frameInset" minX="15" minY="171" height="98" maxX="14"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <date key="date" timeIntervalSinceReferenceDate="499023109.98957503">
-                                    <!--2016-10-24 17:31:49 +0000-->
-                                </date>
-                                <connections>
-                                    <action selector="datePickerAction:" destination="OBH-Fd-Oxa" eventType="valueChanged" id="90U-cn-gVg"/>
-                                </connections>
-                            </datePicker>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bDZ-jl-osH">
                                 <frame key="frameInset" minY="284" width="320" height="1"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -135,13 +137,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Gz-El-4bW">
-                                <frame key="frameInset" minX="175" minY="547" width="113" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" red="0.21960784489999999" green="0.0078431377190000002" blue="0.85490196939999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GFt-RB-mM3">
                                 <frame key="frameInset" minX="96" minY="297" width="210" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -193,6 +188,23 @@
                                 <frame key="frameInset" minX="87" minY="436" width="146" height="112"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Gz-El-4bW">
+                                <frame key="frameInset" minX="175" minY="546" width="113" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.21960784489999999" green="0.0078431377190000002" blue="0.85490196939999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="LUM-6p-fQk">
+                                <frame key="frameInset" minY="171" height="98"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <date key="date" timeIntervalSinceReferenceDate="499023109.98957503">
+                                    <!--2016-10-24 17:31:49 +0000-->
+                                </date>
+                                <connections>
+                                    <action selector="datePickerAction:" destination="OBH-Fd-Oxa" eventType="valueChanged" id="aEs-Kh-8Rw"/>
+                                </connections>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -211,13 +223,13 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="categoryLabel" destination="GFt-RB-mM3" id="FD6-Kd-W5C"/>
+                        <outlet property="categoryLabel" destination="GFt-RB-mM3" id="jS1-ds-Vf7"/>
                         <outlet property="completedLabel" destination="ylP-kW-yDj" id="AAk-ZP-MIv"/>
                         <outlet property="imageView" destination="bvp-g7-fqo" id="L13-eL-hOD"/>
-                        <outlet property="selectedDate" destination="DHW-PE-vEr" id="f04-jk-Qrc"/>
+                        <outlet property="selectedDate" destination="DHW-PE-vEr" id="PZy-Jy-UNp"/>
                         <outlet property="toDoCategoryControl" destination="vbq-za-Vgx" id="Pb0-pn-0dK"/>
                         <outlet property="toDoCompleteSwitch" destination="7a4-pW-KJ2" id="guX-WL-TOR"/>
-                        <outlet property="toDoDatePicker" destination="LUM-6p-fQk" id="eRr-y6-Qcs"/>
+                        <outlet property="toDoDatePicker" destination="LUM-6p-fQk" id="09a-uj-2oO"/>
                         <outlet property="toDoModifiedLabel" destination="2Gz-El-4bW" id="hZ0-6V-hSf"/>
                         <outlet property="toDoNameField" destination="ji3-an-ge4" id="hle-fb-dqD"/>
                     </connections>
@@ -252,7 +264,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ydW-Ej-mpu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vqB-BB-Rll">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m8L-FF-Gzq"/>
@@ -300,6 +312,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="EQw-vI-Mhp"/>
+        <segue reference="Tdr-qX-Krf"/>
     </inferredMetricsTieBreakers>
 </document>

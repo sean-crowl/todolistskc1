@@ -12,6 +12,7 @@ class ToDoTableViewCell: UITableViewCell {
     @IBOutlet weak var toDoTitleLabel: UILabel!
     @IBOutlet weak var toDoDateLabel: UILabel!
 
+
     
     weak var todo: ToDo!
     weak var todocell: ToDoTableViewCell!
@@ -29,8 +30,8 @@ class ToDoTableViewCell: UITableViewCell {
     
     func setupCell(_ todo: ToDo) {
         self.todo = todo
-        toDoTitleLabel.text = todo.title
-        toDoDateLabel.text = todo.dueDate
+        toDoTitleLabel.text! = todo.title
+        toDoDateLabel.text! = todo.dueDate
     }
     
 }
