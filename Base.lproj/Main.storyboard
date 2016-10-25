@@ -135,15 +135,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last Modified:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvN-53-WY4">
-                                <frame key="frameInset" minX="74" minY="547" width="87" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Gz-El-4bW">
-                                <frame key="frameInset" minX="163" minY="547" width="113" height="21"/>
+                                <frame key="frameInset" minX="175" minY="547" width="113" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.21960784489999999" green="0.0078431377190000002" blue="0.85490196939999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -189,12 +182,16 @@
                                 <color key="textColor" red="0.21960784489999999" green="0.0078431377190000002" blue="0.85490196939999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h0H-fq-iht">
-                                <frame key="frameInset" minX="105" minY="442" width="110" height="97"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="128" id="Pmr-u6-FNO"/>
-                                    <constraint firstAttribute="height" constant="128" id="cZK-ET-iJi"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last Modified:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvN-53-WY4">
+                                <frame key="frameInset" minX="80" minY="546" width="87" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bvp-g7-fqo">
+                                <frame key="frameInset" minX="87" minY="436" width="146" height="112"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -206,12 +203,17 @@
                                     <segue destination="kDz-gU-hDM" kind="unwind" unwindAction="saveToDoDetail:" id="RXN-Ex-MsY"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="camera" id="rdn-5x-rrj"/>
+                            <barButtonItem systemItem="camera" id="rdn-5x-rrj">
+                                <connections>
+                                    <action selector="choosePhoto:" destination="OBH-Fd-Oxa" id="mo0-Ya-mfU"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="categoryLabel" destination="GFt-RB-mM3" id="FD6-Kd-W5C"/>
                         <outlet property="completedLabel" destination="ylP-kW-yDj" id="AAk-ZP-MIv"/>
+                        <outlet property="imageView" destination="bvp-g7-fqo" id="L13-eL-hOD"/>
                         <outlet property="selectedDate" destination="DHW-PE-vEr" id="f04-jk-Qrc"/>
                         <outlet property="toDoCategoryControl" destination="vbq-za-Vgx" id="Pb0-pn-0dK"/>
                         <outlet property="toDoCompleteSwitch" destination="7a4-pW-KJ2" id="guX-WL-TOR"/>

@@ -17,6 +17,9 @@ class ToDoDetailViewController: UIViewController {
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var completedLabel: UILabel!
     @IBOutlet weak var selectedDate: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    
+    var gestureRecognizer: UITapGestureRecognizer!
     
     
     var todo = ToDo()
@@ -30,12 +33,37 @@ class ToDoDetailViewController: UIViewController {
         completedLabel.text = todo.completed
         selectedDate.text = todo.dueDate
         
-        // Do any additional setup after loading the view.
+        if let image = todo.image {
+            imageView.image = image
+            addGestureRecognizer()
+        } else {
+            imageView.isHidden = true
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func addGestureRecognizer() {
+        gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(viewImage))
+        imageView.addGestureRecognizer(gestureRecognizer)
+    }
+    
+    func viewImage() {
+        if let image = imageView.image {
+            ToDoStore.shared.selectedImage = image
+            let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageNavController")
+            present(viewController, animated: true, completion: nil)
+        }
+    }
+    
+    fileprivate func showPicker(_ type: UIImagePickerControllerSourceType) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = type
+        present(imagePicker, animated: true, completion: nil)
     }
     
     
@@ -49,6 +77,7 @@ class ToDoDetailViewController: UIViewController {
         todo.category = categoryLabel.text!
         todo.completed = completedLabel.text!
         todo.dueDate = selectedDate.text!
+        todo.image = imageView.image
     }
 
     // MARK: - IBActions
@@ -83,6 +112,50 @@ class ToDoDetailViewController: UIViewController {
         let strDate = dateFormatter.string(from: toDoDatePicker.date)
         self.selectedDate.text = strDate
         
+    }
+    
+    @IBAction func choosePhoto(_ sender: AnyObject) {
+        let alert = UIAlertController(title: "Picture", message: "Choose a picture type", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action) in
+            self.showPicker(.camera)
+        }))
+        alert.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action) in
+            self.showPicker(.photoLibrary)
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
+}
+
+extension ToDoDetailViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        
+        if let image = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+            let maxSize: CGFloat = 512
+            let scale = maxSize / image.size.width
+            let newHeight = image.size.height * scale
+            
+            UIGraphicsBeginImageContext(CGSize(width: maxSize, height: newHeight))
+            image.draw(in: CGRect(x: 0, y: 0, width: maxSize, height: newHeight))
+            let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            
+            imageView.image = resizedImage
+            
+            imageView.isHidden = false
+            if gestureRecognizer != nil {
+                imageView.removeGestureRecognizer(gestureRecognizer)
+            }
+            addGestureRecognizer()
+            
+        }
     }
     
     

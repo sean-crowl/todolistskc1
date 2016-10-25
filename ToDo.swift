@@ -15,12 +15,14 @@ class ToDo: NSObject, NSCoding {
     var category = ""
     var completed = ""
     var dueDate = ""
+    var image: UIImage?
     
     let titleKey = "title"
     let dateKey = "date"
     let categoryLabelKey = "category"
     let completedKey = "completed"
     let dueDateKey = "dueDate"
+    let imageKey = "image"
     
     var dateString: String {
         let dateFormatter = DateFormatter()
@@ -40,11 +42,13 @@ class ToDo: NSObject, NSCoding {
     required init?(coder aDecoder: NSCoder) {
         self.title = aDecoder.decodeObject(forKey: titleKey) as! String
         self.date = aDecoder.decodeObject(forKey: dateKey) as! Date
+        self.image = aDecoder.decodeObject(forKey: imageKey) as? UIImage
     }
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(title, forKey: titleKey)
         aCoder.encode(date, forKey: dateKey)
+        aCoder.encode(image, forKey: imageKey)
     }
 }
 
