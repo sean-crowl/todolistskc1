@@ -9,17 +9,22 @@
 import UIKit
 
 class ToDoDetailViewController: UIViewController  {
+    
+    // MARK: - Outlets
     @IBOutlet weak var toDoNameField: UITextField!
     @IBOutlet weak var toDoDatePicker: UIDatePicker!
-    @IBOutlet weak var toDoCategoryControl: UISegmentedControl!
     @IBOutlet weak var toDoCompleteSwitch: UISwitch!
     @IBOutlet weak var toDoModifiedLabel: UILabel!
-    @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var completedLabel: UILabel!
     @IBOutlet weak var selectedDate: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var categorySet: UIPickerView!
+    @IBOutlet weak var categoryLabel: UILabel!
     
     var gestureRecognizer: UITapGestureRecognizer!
+    
+    var categoryArray = ["Work", "Home", "Other"]
+    var categoryPick = 0
     
     
     var todo = ToDo()
@@ -27,9 +32,10 @@ class ToDoDetailViewController: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        categorySet.delegate = self
+        categorySet.dataSource = self
         toDoNameField.text = todo.title
         toDoModifiedLabel.text = todo.dateString
-        categoryLabel.text = todo.category
         completedLabel.text = todo.completed
         selectedDate.text = todo.dueDate
         
@@ -67,6 +73,7 @@ class ToDoDetailViewController: UIViewController  {
     }
     
     
+    
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -74,28 +81,15 @@ class ToDoDetailViewController: UIViewController  {
         todo.title = toDoNameField.text!
         todo.date = Date()
         toDoModifiedLabel.text = todo.dateString
-        todo.category = categoryLabel.text!
+        todo.categorySet = categorySet.selectedRow(inComponent: 0)
         todo.completed = completedLabel.text!
         todo.dueDate = selectedDate.text!
         todo.image = imageView.image
-        ToDoStore.shared.save()
+//        ToDoStore.shared.save()
     }
 
     // MARK: - IBActions
     
-    @IBAction func categoryChanged(_ sender: UISegmentedControl) {
-        switch toDoCategoryControl.selectedSegmentIndex
-        {
-        case 0:
-            categoryLabel.text = "Work";
-        case 1:
-            categoryLabel.text = "Home";
-        case 2:
-            categoryLabel.text = "Other";
-        default:
-            break; 
-        }
-    }
     
     @IBAction func completedClicked(sender: UISwitch) {
         if toDoCompleteSwitch.isOn {
@@ -125,6 +119,17 @@ class ToDoDetailViewController: UIViewController  {
         }))
         present(alert, animated: true, completion: nil)
     }
+    
+    @IBAction func savePickerItem(_ sender: AnyObject) {
+        if sender.tag == 0 {
+            todo.categorySet = 0
+        } else if sender.tag == 1 {
+            todo.categorySet = 1
+        } else if sender.tag == 2 {
+            todo.categorySet = 2
+        }
+    }
+
     
     
 }
@@ -160,4 +165,28 @@ extension ToDoDetailViewController: UINavigationControllerDelegate, UIImagePicke
     }
     
     
+}
+
+extension ToDoDetailViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return categoryArray[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return categoryArray.count
+    }
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int{
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        categoryPick = row
+        
+        if (categoryPick == 0) {
+            categoryLabel.text = "Work"
+        } else if (categoryPick == 1) {
+            categoryLabel.text = "Home"
+        } else if (categoryPick == 2) {
+            categoryLabel.text = "Other"
+        }
+    }
 }

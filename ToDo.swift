@@ -12,10 +12,11 @@ import UIKit
 class ToDo: NSObject, NSCoding {
     var title = ""
     var date = Date()
-    var category = ""
     var completed = ""
     var image: UIImage?
     var dueDate = ""
+    var categorySet: Int = 0
+    var priority: Double = 0.0
     
     let titleKey = "title"
     let dateKey = "date"
@@ -23,6 +24,8 @@ class ToDo: NSObject, NSCoding {
     let completedKey = "completed"
     let imageKey = "image"
     let dueDateKey = "dueDate"
+    let categorySetKey = "categorySet"
+    let priorityKey = "priority"
     
     var dateString: String {
         let dateFormatter = DateFormatter()
@@ -42,10 +45,11 @@ class ToDo: NSObject, NSCoding {
     required init?(coder aDecoder: NSCoder) {
         self.title = aDecoder.decodeObject(forKey: titleKey) as! String
         self.dueDate = aDecoder.decodeObject(forKey: dueDateKey) as! String
-        self.category = aDecoder.decodeObject(forKey: categoryKey) as! String
         self.completed = aDecoder.decodeObject(forKey: completedKey) as! String
         self.date = aDecoder.decodeObject(forKey: dateKey) as! Date
         self.image = aDecoder.decodeObject(forKey: imageKey) as? UIImage
+        self.categorySet = aDecoder.decodeInteger(forKey: categorySetKey)
+        self.priority = aDecoder.decodeDouble(forKey: priorityKey)
         
         
     }
@@ -55,8 +59,9 @@ class ToDo: NSObject, NSCoding {
         aCoder.encode(date, forKey: dateKey)
         aCoder.encode(image, forKey: imageKey)
         aCoder.encode(dueDate, forKey: dueDateKey)
-        aCoder.encode(category, forKey: categoryKey)
         aCoder.encode(completed, forKey: completedKey)
+        aCoder.encode(categorySet, forKey: categorySetKey)
+        aCoder.encode(priority, forKey: priorityKey)
     }
 }
 

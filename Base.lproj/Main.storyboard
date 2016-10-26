@@ -102,14 +102,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Category:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5xc-qF-jbK">
-                                <frame key="frameInset" minX="16" minY="297" width="75" height="21"/>
+                                <frame key="frameInset" minX="16" minY="286" width="75" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Completed:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GqB-yH-Mlm">
-                                <frame key="frameInset" minX="89" minY="374" width="89" height="21"/>
+                                <frame key="frameInset" minX="9" minY="448" width="89" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -128,48 +128,17 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bDZ-jl-osH">
-                                <frame key="frameInset" minY="284" width="320" height="1"/>
+                                <frame key="frameInset" minY="277" width="320" height="1"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8A4-0M-4SH">
-                                <frame key="frameInset" minY="360" width="320" height="1"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GFt-RB-mM3">
-                                <frame key="frameInset" minX="96" minY="297" width="210" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.37647058820000001" green="0.1176470588" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="vbq-za-Vgx">
-                                <frame key="frameInset" minX="57" minY="326" width="207" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Work"/>
-                                    <segment title="Home"/>
-                                    <segment title="Other"/>
-                                </segments>
-                                <connections>
-                                    <action selector="categoryChanged:" destination="OBH-Fd-Oxa" eventType="valueChanged" id="AP7-pi-gWn"/>
-                                </connections>
-                            </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ylP-kW-yDj">
-                                <frame key="frameInset" minX="186" minY="374" width="42" height="21"/>
+                                <frame key="frameInset" minX="102" minY="448" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.37647058820000001" green="0.1176470588" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7a4-pW-KJ2">
-                                <frame key="frameInset" minX="136" minY="403" width="51" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="completedClickedWithSender:" destination="OBH-Fd-Oxa" eventType="valueChanged" id="n28-gy-KiP"/>
-                                </connections>
-                            </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHW-PE-vEr">
                                 <frame key="frameInset" minX="97" minY="149" width="209" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -184,10 +153,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bvp-g7-fqo">
-                                <frame key="frameInset" minX="87" minY="436" width="146" height="112"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Gz-El-4bW">
                                 <frame key="frameInset" minX="175" minY="546" width="113" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -205,6 +170,37 @@
                                     <action selector="datePickerAction:" destination="OBH-Fd-Oxa" eventType="valueChanged" id="aEs-Kh-8Rw"/>
                                 </connections>
                             </datePicker>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7a4-pW-KJ2">
+                                <frame key="frameInset" minX="53" minY="477" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="completedClickedWithSender:" destination="OBH-Fd-Oxa" eventType="valueChanged" id="n28-gy-KiP"/>
+                                </connections>
+                            </switch>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bvp-g7-fqo">
+                                <frame key="frameInset" minX="158" minY="436" width="146" height="112"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8A4-0M-4SH">
+                                <frame key="frameInset" minY="427" width="320" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdl-sF-ZTZ">
+                                <frame key="frameInset" minX="97" minY="286" width="162" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lBI-TU-jeT">
+                                <frame key="frameInset" minY="308" height="73"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="OBH-Fd-Oxa" id="E8P-5L-9DY"/>
+                                    <outlet property="delegate" destination="OBH-Fd-Oxa" id="t0N-hv-DAt"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -212,6 +208,7 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="save" id="02l-Rh-UoY">
                                 <connections>
+                                    <action selector="savePickerItem:" destination="OBH-Fd-Oxa" id="aR8-lX-k7M"/>
                                     <segue destination="kDz-gU-hDM" kind="unwind" unwindAction="saveToDoDetail:" id="RXN-Ex-MsY"/>
                                 </connections>
                             </barButtonItem>
@@ -223,11 +220,11 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="categoryLabel" destination="GFt-RB-mM3" id="jS1-ds-Vf7"/>
+                        <outlet property="categoryLabel" destination="gdl-sF-ZTZ" id="93b-QB-SvL"/>
+                        <outlet property="categorySet" destination="lBI-TU-jeT" id="06Q-MS-QEp"/>
                         <outlet property="completedLabel" destination="ylP-kW-yDj" id="AAk-ZP-MIv"/>
                         <outlet property="imageView" destination="bvp-g7-fqo" id="L13-eL-hOD"/>
                         <outlet property="selectedDate" destination="DHW-PE-vEr" id="PZy-Jy-UNp"/>
-                        <outlet property="toDoCategoryControl" destination="vbq-za-Vgx" id="Pb0-pn-0dK"/>
                         <outlet property="toDoCompleteSwitch" destination="7a4-pW-KJ2" id="guX-WL-TOR"/>
                         <outlet property="toDoDatePicker" destination="LUM-6p-fQk" id="09a-uj-2oO"/>
                         <outlet property="toDoModifiedLabel" destination="2Gz-El-4bW" id="hZ0-6V-hSf"/>
@@ -312,6 +309,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Tdr-qX-Krf"/>
+        <segue reference="EQw-vI-Mhp"/>
     </inferredMetricsTieBreakers>
 </document>

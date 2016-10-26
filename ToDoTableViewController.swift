@@ -28,19 +28,19 @@ class ToDoTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        // #TODO Incomplete implementation, return the number of sections
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return ToDoStore.shared.getCount()
+        return ToDoStore.shared.getCount(categorySet: section)
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ToDoTableViewCell.self)) as! ToDoTableViewCell
 
-        cell.setupCell(ToDoStore.shared.getToDo(indexPath.row))
+        cell.setupCell(ToDoStore.shared.getToDo(indexPath.row, categorySet: indexPath.section))
 
         return cell
     }
@@ -68,7 +68,7 @@ class ToDoTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            ToDoStore.shared.deleteToDo(indexPath.row)
+            ToDoStore.shared.deleteToDo(indexPath.row, categorySet: indexPath.section)
             tableView.deleteRows(at: [indexPath], with: .fade)
             ToDoStore.shared.save()
         } else if editingStyle == .insert {
@@ -107,19 +107,15 @@ class ToDoTableViewController: UITableViewController {
     @IBAction func saveToDoDetail(_ segue: UIStoryboardSegue) {
         let toDoDetailVC = segue.source as! ToDoDetailViewController
         if let indexPath = tableView.indexPathForSelectedRow {
-            ToDoStore.shared.sort()
-            
-            var indexPaths: [IndexPath] = []
-            for index in 0...indexPath.row {
-                indexPaths.append(IndexPath(row: index, section: 0))
-            }
-            
-            tableView.reloadRows(at: indexPaths, with: .automatic)
+
+            ToDoStore.shared.deleteToDo(indexPath.row, categorySet: indexPath.section)
+            ToDoStore.shared.addToDo(toDoDetailVC.todo, categorySet: indexPath.section)
+            tableView.reloadData()
         } else {
-            ToDoStore.shared.addToDo(toDoDetailVC.todo)
-            let indexPath = IndexPath(row: 0, section: 0)
+            let indexPath = IndexPath(row: 0, section: toDoDetailVC.todo.categorySet)
+            ToDoStore.shared.addToDo(toDoDetailVC.todo, categorySet: indexPath.section)
             tableView.insertRows(at: [indexPath], with: .automatic)
-            ToDoStore.shared.save()
+
             
             
             
