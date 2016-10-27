@@ -12,10 +12,10 @@ class ToDoTableViewCell: UITableViewCell {
     @IBOutlet weak var toDoTitleLabel: UILabel!
     @IBOutlet weak var toDoDateLabel: UILabel!
 
-
-    
     weak var todo: ToDo!
     weak var todocell: ToDoTableViewCell!
+    
+    var isComplete: Bool = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,6 +32,7 @@ class ToDoTableViewCell: UITableViewCell {
         self.todo = todo
         toDoTitleLabel.text! = todo.title
         toDoDateLabel.text! = todo.dueDate
+        isComplete = todo.completed
     }
     
 }

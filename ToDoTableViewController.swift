@@ -9,6 +9,13 @@
 import UIKit
 
 class ToDoTableViewController: UITableViewController {
+    @IBOutlet weak var showIncomplete: UISwitch!
+    
+    
+    var todo = ToDo()
+    var todocell = ToDoTableViewCell()
+    
+    var completeTrue = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,12 +43,22 @@ class ToDoTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return ToDoStore.shared.getCount(categorySet: section)
     }
+    
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ToDoTableViewCell.self)) as! ToDoTableViewCell
 
         cell.setupCell(ToDoStore.shared.getToDo(indexPath.row, categorySet: indexPath.section))
-
+        
+        if completeTrue == 1 {
+            if cell.isComplete == true {
+                cell.isHidden = true
+            } else {
+                cell.isHidden = false
+            }
+        }
+        
+    
         return cell
     }
     
@@ -129,6 +146,17 @@ class ToDoTableViewController: UITableViewController {
             
             
             
+        }
+    }
+    
+    // MARK: - IBActions
+    @IBAction func toggleIncomplete(_ sender: AnyObject) {
+        if showIncomplete.isOn {
+            completeTrue = 1
+            self.tableView.reloadData()
+        } else {
+            completeTrue = 2
+            self.tableView.reloadData()
         }
     }
 

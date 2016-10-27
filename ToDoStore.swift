@@ -11,7 +11,7 @@ import UIKit
 class ToDoStore {
     static let shared = ToDoStore()
     
-    fileprivate var todos: [[ToDo]]!
+    var todos: [[ToDo]]!
     
     var todo = ToDo()
     
@@ -25,9 +25,9 @@ class ToDoStore {
             todos = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as! [[ToDo]]
         } else {
             todos = [[], [], []]
-            todos[0].append(ToDo(title: "ToDo 1"))
-            todos[1].append(ToDo(title: "Todo 2"))
-            todos[2].append(ToDo(title: "ToDo 3"))
+            todos[0].append(ToDo(title: "Sell Fish", dueDate: "11-05-3892 12:00"))
+            todos[1].append(ToDo(title: "Feed Fish", dueDate: "Every Day!!!"))
+            todos[2].append(ToDo(title: "Talk about Fish", dueDate: "Now o'clock" ))
             save()
         }
         sort()
@@ -66,6 +66,7 @@ class ToDoStore {
         })
     }
     }
+    
     
     
     

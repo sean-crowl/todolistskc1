@@ -28,6 +28,7 @@ class ToDoDetailViewController: UIViewController  {
     
     
     var todo = ToDo()
+    var todocell = ToDoTableViewCell()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +37,9 @@ class ToDoDetailViewController: UIViewController  {
         categorySet.dataSource = self
         toDoNameField.text = todo.title
         toDoModifiedLabel.text = todo.dateString
-        completedLabel.text = todo.completed
         selectedDate.text = todo.dueDate
+        categoryLabel.text = todo.categoryLabel
+        toDoCompleteSwitch.isOn = todo.completed
         
         if let image = todo.image {
             imageView.image = image
@@ -45,6 +47,7 @@ class ToDoDetailViewController: UIViewController  {
         } else {
             imageView.isHidden = true
         }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -82,10 +85,10 @@ class ToDoDetailViewController: UIViewController  {
         todo.date = Date()
         toDoModifiedLabel.text = todo.dateString
         todo.categorySet = categorySet.selectedRow(inComponent: 0)
-        todo.completed = completedLabel.text!
         todo.dueDate = selectedDate.text!
         todo.image = imageView.image
-//        ToDoStore.shared.save()
+        todo.categoryLabel = categoryLabel.text!
+        ToDoStore.shared.save()
     }
 
     // MARK: - IBActions
@@ -93,11 +96,11 @@ class ToDoDetailViewController: UIViewController  {
     
     @IBAction func completedClicked(sender: UISwitch) {
         if toDoCompleteSwitch.isOn {
-            completedLabel.text = "No"
             toDoCompleteSwitch.setOn(false, animated:true)
+            todo.completed = false
         } else {
-            completedLabel.text = "Yes"
             toDoCompleteSwitch.setOn(true, animated:true)
+            todo.completed = true
         }
     }
     
