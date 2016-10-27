@@ -10,22 +10,26 @@ import UIKit
 
 class ToDoTableViewController: UITableViewController {
     @IBOutlet weak var showIncomplete: UISwitch!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     
     var todo = ToDo()
     var todocell = ToDoTableViewCell()
     
     var completeTrue = 0
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -53,14 +57,17 @@ class ToDoTableViewController: UITableViewController {
         if completeTrue == 1 {
             if cell.isComplete == true {
                 cell.isHidden = true
+                self.tableView.rowHeight = 0
             } else {
                 cell.isHidden = false
+                self.tableView.rowHeight = 80
             }
         }
         
     
         return cell
     }
+    
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch (section) {
@@ -135,19 +142,18 @@ class ToDoTableViewController: UITableViewController {
         if let indexPath = tableView.indexPathForSelectedRow {
 
             ToDoStore.shared.deleteToDo(indexPath.row, categorySet: indexPath.section)
-            ToDoStore.shared.addToDo(toDoDetailVC.todo, categorySet: indexPath.section)
+            ToDoStore.shared.addToDo(toDoDetailVC.todo, categorySet: toDoDetailVC.todo.categorySet)
             tableView.reloadData()
         } else {
             let indexPath = IndexPath(row: 0, section: toDoDetailVC.todo.categorySet)
             ToDoStore.shared.addToDo(toDoDetailVC.todo, categorySet: indexPath.section)
             tableView.insertRows(at: [indexPath], with: .automatic)
 
-            
-            
-            
-            
+        
         }
     }
+    
+    
     
     // MARK: - IBActions
     @IBAction func toggleIncomplete(_ sender: AnyObject) {
