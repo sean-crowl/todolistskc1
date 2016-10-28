@@ -16,51 +16,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="XsQ-ge-3oG">
-                            <rect key="frame" x="0.0" y="64" width="320" height="90"/>
+                            <rect key="frame" x="0.0" y="64" width="320" height="42"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Show Incomplete:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R5f-Ix-bg1">
-                                    <frame key="frameInset" minX="8" minY="56" width="107" height="21"/>
+                                    <frame key="frameInset" minX="8" minY="10" width="107" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="p6E-gd-B4n">
-                                    <frame key="frameInset" minX="117" minY="51" width="51" height="31"/>
+                                    <frame key="frameInset" minX="117" minY="5" width="51" height="31"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <connections>
                                         <action selector="toggleIncomplete:" destination="sZm-SX-Nd1" eventType="valueChanged" id="dkD-eD-Jyb"/>
                                     </connections>
                                 </switch>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Add Category?" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lc0-iB-BSu">
-                                    <frame key="frameInset" minX="174" minY="52" width="99" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </textField>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tfx-Mv-5WP">
-                                    <frame key="frameInset" minX="281" minY="52" width="30" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Add"/>
-                                    <connections>
-                                        <action selector="addCategory:" destination="sZm-SX-Nd1" eventType="touchUpInside" id="PNn-BT-TaE"/>
-                                    </connections>
-                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoTableViewCell" rowHeight="90" id="gF2-Rl-RGn" customClass="ToDoTableViewCell" customModule="ToDoListSKC">
-                                <rect key="frame" x="0.0" y="182" width="320" height="90"/>
+                                <rect key="frame" x="0.0" y="134" width="320" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gF2-Rl-RGn" id="4kk-Qk-1pW">
                                     <frame key="frameInset" width="320" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A8p-iC-XWF">
-                                            <frame key="frameInset" minX="8" minY="11" width="304" height="21"/>
+                                            <frame key="frameInset" minX="8" minY="11" width="232" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -80,9 +65,17 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Complete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Nz-Ib-jzu">
+                                            <frame key="frameInset" minX="249" minY="11" width="63" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.1726893746" green="0.6414226113" blue="0.1855087809" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="completeLabelView" destination="0Nz-Ib-jzu" id="Vc3-Au-ajg"/>
                                     <outlet property="toDoDateLabel" destination="q4Q-VJ-nNJ" id="N43-8f-dJH"/>
                                     <outlet property="toDoTitleLabel" destination="A8p-iC-XWF" id="YGZ-JK-MFb"/>
                                     <segue destination="OBH-Fd-Oxa" kind="show" identifier="EditToDoSegue" id="Tdr-qX-Krf"/>
@@ -104,8 +97,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="addCategoryField" destination="lc0-iB-BSu" id="brj-nT-1ab"/>
-                        <outlet property="searchDisplayController" destination="Xi4-Ng-e0m" id="VTT-w4-yyw"/>
+                        <outlet property="searchDisplayController" destination="9oX-jL-gHG" id="AmQ-AK-mCx"/>
                         <outlet property="showIncomplete" destination="p6E-gd-B4n" id="nDl-I2-Y2X"/>
                     </connections>
                 </tableViewController>
@@ -118,8 +110,24 @@
                         <outlet property="searchResultsDelegate" destination="sZm-SX-Nd1" id="Brx-lU-QfG"/>
                     </connections>
                 </searchDisplayController>
+                <searchDisplayController id="LGW-ua-uB1">
+                    <connections>
+                        <outlet property="delegate" destination="sZm-SX-Nd1" id="8UA-19-T4B"/>
+                        <outlet property="searchContentsController" destination="sZm-SX-Nd1" id="8if-TF-gsI"/>
+                        <outlet property="searchResultsDataSource" destination="sZm-SX-Nd1" id="70D-SS-QND"/>
+                        <outlet property="searchResultsDelegate" destination="sZm-SX-Nd1" id="vUv-CG-d7M"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="9oX-jL-gHG">
+                    <connections>
+                        <outlet property="delegate" destination="sZm-SX-Nd1" id="TdO-Yq-hDZ"/>
+                        <outlet property="searchContentsController" destination="sZm-SX-Nd1" id="LBr-Wm-4sh"/>
+                        <outlet property="searchResultsDataSource" destination="sZm-SX-Nd1" id="Ckn-Sc-W6N"/>
+                        <outlet property="searchResultsDelegate" destination="sZm-SX-Nd1" id="m97-Eu-1a6"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="427.5" y="-66.549295774647888"/>
+            <point key="canvasLocation" x="425.625" y="-67.605633802816897"/>
         </scene>
         <!--To Do Detail View Controller-->
         <scene sceneID="aGc-bc-DuM">

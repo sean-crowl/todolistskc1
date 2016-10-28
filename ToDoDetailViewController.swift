@@ -112,9 +112,11 @@ class ToDoDetailViewController: UIViewController  {
         if toDoCompleteSwitch.isOn {
             toDoCompleteSwitch.setOn(false, animated:true)
             todo.completed = false
+            todo.completeLabel = ""
         } else {
             toDoCompleteSwitch.setOn(true, animated:true)
             todo.completed = true
+            todo.completeLabel = "Complete"
         }
     }
     

@@ -55,6 +55,10 @@ class ToDoStore {
     func getCount(categorySet: Int) -> Int {
         return todos[categorySet].count
     }
+        
+    func getCategoryCount() -> Int {
+            return tododetail.categoryArray.count
+    }
     
     func save() {
         NSKeyedArchiver.archiveRootObject(todos, toFile: archiveFilePath())
@@ -67,10 +71,7 @@ class ToDoStore {
         })
     }
     }
-    
-    
-    
-    
+
     
     
     // MARK: - Private Functions

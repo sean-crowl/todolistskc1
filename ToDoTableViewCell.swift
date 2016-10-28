@@ -11,6 +11,7 @@ import UIKit
 class ToDoTableViewCell: UITableViewCell {
     @IBOutlet weak var toDoTitleLabel: UILabel!
     @IBOutlet weak var toDoDateLabel: UILabel!
+    @IBOutlet weak var completeLabelView: UILabel!
 
     weak var todo: ToDo!
     weak var todocell: ToDoTableViewCell!
@@ -28,11 +29,12 @@ class ToDoTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setupCell(_ todo: ToDo) {
+    func setupCell(todo: ToDo) {
         self.todo = todo
         toDoTitleLabel.text! = todo.title
         toDoDateLabel.text! = todo.dueDate
         isComplete = todo.completed
+        completeLabelView.text! = todo.completeLabel
     }
     
 }

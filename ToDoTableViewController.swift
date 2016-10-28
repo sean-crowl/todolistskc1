@@ -19,9 +19,20 @@ class ToDoTableViewController: UITableViewController {
     var tododetail = ToDoDetailViewController()
     
     var completeTrue = 0
+    var searching = false
+    let searchController = UISearchController(searchResultsController: nil)
+    var searchResults: [[ToDo]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchController.searchResultsUpdater = self
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.sizeToFit()
+        searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "Search ToDo Items"
+        self.navigationItem.titleView = searchController.searchBar
         
         
         // Uncomment the following line to preserve selection between presentations
@@ -32,11 +43,6 @@ class ToDoTableViewController: UITableViewController {
     }
     
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -46,14 +52,21 @@ class ToDoTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        if searching && searchController.searchBar.text != "" {
+            return searchResults[section].count
+        }
         return ToDoStore.shared.getCount(categorySet: section)
     }
     
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ToDoTableViewCell.self)) as! ToDoTableViewCell
-
-        cell.setupCell(ToDoStore.shared.getToDo(indexPath.row, categorySet: indexPath.section))
+        
+        if searching && searchController.searchBar.text != "" {
+            let todo = searchResults[indexPath.section][indexPath.row]
+            cell.setupCell(todo: todo)
+        } else {
+        cell.setupCell(todo: ToDoStore.shared.getToDo(indexPath.row, categorySet: indexPath.section))
         
         if completeTrue == 1 {
             if cell.isComplete == true {
@@ -65,7 +78,7 @@ class ToDoTableViewController: UITableViewController {
             }
         }
         
-    
+        }
         return cell
     }
     
@@ -152,11 +165,13 @@ class ToDoTableViewController: UITableViewController {
 
             ToDoStore.shared.deleteToDo(indexPath.row, categorySet: indexPath.section)
             ToDoStore.shared.addToDo(toDoDetailVC.todo, categorySet: toDoDetailVC.todo.categorySet)
+            ToDoStore.shared.save()
             tableView.reloadData()
         } else {
             let indexPath = IndexPath(row: 0, section: toDoDetailVC.todo.categorySet)
             ToDoStore.shared.addToDo(toDoDetailVC.todo, categorySet: indexPath.section)
             tableView.insertRows(at: [indexPath], with: .automatic)
+            ToDoStore.shared.save()
 
         
         }
@@ -176,5 +191,60 @@ class ToDoTableViewController: UITableViewController {
             self.tableView.reloadData()
         }
     }
+ 
+    // MARK: - Search Functions
+    func searchToDos(searchText: String) -> [[ToDo]] {
+        var searchResults: [[ToDo]] = []
+        for index in 0..<todostore.todos.count {
+            searchResults.append(todostore.todos[index].filter({ (todo) -> Bool in
+                return todo.title.lowercased().contains(searchText.lowercased())
+            }))
+        }
+        
+        return searchResults
+    }
+    
     
 }
+
+
+extension ToDoTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text, searchText != "" {
+            searchResults = searchToDos(searchText: searchText)
+        } else {
+            searchResults = []
+            for _ in 0..<ToDoStore.shared.getCategoryCount() {
+                searchResults.append([])
+            }
+        }
+        tableView.reloadData()
+    }
+}
+
+extension ToDoTableViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let searchText = searchBar.text, searchText != "" {
+            searchResults = searchToDos(searchText: searchText)
+            
+        }
+    }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        tableView.isHidden = false
+        
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        tableView.isHidden = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchResults = []
+        
+        for _ in 0..<ToDoStore.shared.getCategoryCount() {
+            searchResults.append([])
+        }
+        tableView.reloadData()
+    }
+}
+
