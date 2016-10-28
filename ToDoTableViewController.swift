@@ -10,15 +10,16 @@ import UIKit
 
 class ToDoTableViewController: UITableViewController {
     @IBOutlet weak var showIncomplete: UISwitch!
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var addCategoryField: UITextField!
     
     
     var todo = ToDo()
     var todocell = ToDoTableViewCell()
+    var todostore = ToDoStore()
+    var tododetail = ToDoDetailViewController()
     
     var completeTrue = 0
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,7 +41,7 @@ class ToDoTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #TODO Incomplete implementation, return the number of sections
-        return 3
+        return tododetail.categoryArray.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -70,14 +71,22 @@ class ToDoTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch (section) {
+     /*   switch (section) {
         case 0:
             return "Work"
         case 1:
             return "Home"
         default:
             return "Other"
+        }  */
+        
+        if let categoryArray = tododetail.categoryArray as [String]?
+        {
+            return categoryArray[section]
         }
+        
+        // This should never happen, but is a fail safe
+        return "unknown"
     }
 
     /*
@@ -153,7 +162,9 @@ class ToDoTableViewController: UITableViewController {
         }
     }
     
-    
+    // MARK: - Notification Functions
+
+     
     
     // MARK: - IBActions
     @IBAction func toggleIncomplete(_ sender: AnyObject) {
@@ -165,5 +176,5 @@ class ToDoTableViewController: UITableViewController {
             self.tableView.reloadData()
         }
     }
-
+    
 }

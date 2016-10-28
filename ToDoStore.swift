@@ -14,6 +14,7 @@ class ToDoStore {
     var todos: [[ToDo]]!
     
     var todo = ToDo()
+    var tododetail = ToDoDetailViewController()
     
     var selectedImage: UIImage?
     
@@ -66,6 +67,8 @@ class ToDoStore {
         })
     }
     }
+    
+    
     
     
     

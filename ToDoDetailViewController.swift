@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class ToDoDetailViewController: UIViewController  {
     
@@ -89,6 +90,19 @@ class ToDoDetailViewController: UIViewController  {
         todo.image = imageView.image
         todo.categoryLabel = categoryLabel.text!
         ToDoStore.shared.save()
+        
+        let notify = UNMutableNotificationContent()
+        notify.title = NSString.localizedUserNotificationString(forKey: "ToDoListSKC", arguments: nil)
+        notify.body = NSString.localizedUserNotificationString(forKey: todo.title, arguments: nil)
+        notify.sound = UNNotificationSound.default()
+        
+        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .day], from: toDoDatePicker.date)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        let request = UNNotificationRequest.init(identifier: todo.id, content: notify, trigger: trigger)
+        
+        let center = UNUserNotificationCenter.current()
+        center.removePendingNotificationRequests(withIdentifiers: [todo.id])
+        center.add(request)
     }
 
     // MARK: - IBActions
@@ -132,7 +146,6 @@ class ToDoDetailViewController: UIViewController  {
             todo.categorySet = 2
         }
     }
-
     
     
 }

@@ -19,28 +19,35 @@
                             <rect key="frame" x="0.0" y="64" width="320" height="90"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Show Incomplete:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R5f-Ix-bg1">
+                                    <frame key="frameInset" minX="8" minY="56" width="107" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="p6E-gd-B4n">
-                                    <frame key="frameInset" minX="150" minY="51" width="51" height="31"/>
+                                    <frame key="frameInset" minX="117" minY="51" width="51" height="31"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <connections>
                                         <action selector="toggleIncomplete:" destination="sZm-SX-Nd1" eventType="valueChanged" id="dkD-eD-Jyb"/>
                                     </connections>
                                 </switch>
-                                <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yYH-3f-n4Y">
-                                    <frame key="frameInset" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                    <connections>
-                                        <outlet property="delegate" destination="sZm-SX-Nd1" id="Est-Rb-0Ys"/>
-                                    </connections>
-                                </searchBar>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Show Incomplete:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R5f-Ix-bg1">
-                                    <frame key="frameInset" minX="8" minY="56" width="137" height="21"/>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Add Category?" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lc0-iB-BSu">
+                                    <frame key="frameInset" minX="174" minY="52" width="99" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tfx-Mv-5WP">
+                                    <frame key="frameInset" minX="281" minY="52" width="30" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Add"/>
+                                    <connections>
+                                        <action selector="addCategory:" destination="sZm-SX-Nd1" eventType="touchUpInside" id="PNn-BT-TaE"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
@@ -89,18 +96,15 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="To-Do List" id="VnF-lL-mST">
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="aqK-L8-QOm">
-                                <connections>
-                                    <segue destination="OBH-Fd-Oxa" kind="show" identifier="AddToDoSegue" id="EQw-vI-Mhp"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Item" id="1ay-BV-ltD"/>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="aqK-L8-QOm">
+                            <connections>
+                                <segue destination="OBH-Fd-Oxa" kind="show" identifier="AddToDoSegue" id="EQw-vI-Mhp"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="searchBar" destination="yYH-3f-n4Y" id="51P-tk-K1E"/>
+                        <outlet property="addCategoryField" destination="lc0-iB-BSu" id="brj-nT-1ab"/>
                         <outlet property="searchDisplayController" destination="Xi4-Ng-e0m" id="VTT-w4-yyw"/>
                         <outlet property="showIncomplete" destination="p6E-gd-B4n" id="nDl-I2-Y2X"/>
                     </connections>
@@ -109,7 +113,6 @@
                 <searchDisplayController id="Xi4-Ng-e0m">
                     <connections>
                         <outlet property="delegate" destination="sZm-SX-Nd1" id="34c-AZ-Eci"/>
-                        <outlet property="searchBar" destination="yYH-3f-n4Y" id="2TM-YD-vQ2"/>
                         <outlet property="searchContentsController" destination="sZm-SX-Nd1" id="17F-y4-t5w"/>
                         <outlet property="searchResultsDataSource" destination="sZm-SX-Nd1" id="c3m-C2-hcP"/>
                         <outlet property="searchResultsDelegate" destination="sZm-SX-Nd1" id="Brx-lU-QfG"/>

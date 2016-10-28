@@ -19,6 +19,7 @@ class ToDo: NSObject, NSCoding {
     var categoryLabel = ""
     var priority: Double = 0.0
     var toggleSwitch: Int = 0
+    var id = UUID.init().uuidString
     
     let titleKey = "title"
     let dateKey = "date"
@@ -29,6 +30,7 @@ class ToDo: NSObject, NSCoding {
     let categorySetKey = "categorySet"
     let priorityKey = "priority"
     let categoryLabelKey = "categoryLabel"
+    let idKey = "id"
     
     var dateString: String {
         let dateFormatter = DateFormatter()
@@ -55,6 +57,7 @@ class ToDo: NSObject, NSCoding {
         self.categorySet = aDecoder.decodeInteger(forKey: categorySetKey)
         self.priority = aDecoder.decodeDouble(forKey: priorityKey)
         self.categoryLabel = aDecoder.decodeObject(forKey: categoryLabelKey) as! String
+        self.id = aDecoder.decodeObject(forKey: idKey) as! String
         
         
     }
@@ -68,6 +71,7 @@ class ToDo: NSObject, NSCoding {
         aCoder.encode(categorySet, forKey: categorySetKey)
         aCoder.encode(priority, forKey: priorityKey)
         aCoder.encode(categoryLabel, forKey: categoryLabelKey)
+        aCoder.encode(id, forKey: idKey)
     }
 }
 
